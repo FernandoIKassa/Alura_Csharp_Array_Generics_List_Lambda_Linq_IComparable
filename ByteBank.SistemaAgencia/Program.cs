@@ -12,26 +12,30 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
-            ListaDeContasCorrente lista = new ListaDeContasCorrente();
-            lista.Adicionar(new ContaCorrente(1234, 12345));
+            ListaDeContasCorrente lista = new ListaDeContasCorrente(capacidadeInicial: 10);
+
+            ContaCorrente contaTeste = new ContaCorrente(99999, 99999);
+
+            /*lista.Adicionar(new ContaCorrente(1234, 12345));
             lista.Adicionar(new ContaCorrente(1234, 43215));
             lista.Adicionar(new ContaCorrente(1234, 85674));
-            lista.Adicionar(new ContaCorrente(1234, 43215));
+            lista.Adicionar(contaTeste);
             lista.Adicionar(new ContaCorrente(1234, 85674));
             lista.Adicionar(new ContaCorrente(1234, 43215));
-            lista.Adicionar(new ContaCorrente(1234, 85674));
-            lista.Adicionar(new ContaCorrente(1234, 43215));
-            lista.Adicionar(new ContaCorrente(1234, 85674));
-            lista.Adicionar(new ContaCorrente(1234, 12345));
-            lista.Adicionar(new ContaCorrente(1234, 43215));
-            lista.Adicionar(new ContaCorrente(1234, 85674));
-            lista.Adicionar(new ContaCorrente(1234, 43215));
-            lista.Adicionar(new ContaCorrente(1234, 85674));
-            lista.Adicionar(new ContaCorrente(1234, 43215));
-            lista.Adicionar(new ContaCorrente(1234, 85674));
-            lista.Adicionar(new ContaCorrente(1234, 43215));
-            lista.Adicionar(new ContaCorrente(1234, 85674));
-            lista.Adicionar(new ContaCorrente(1234, 12345));
+*/
+            lista.AdicionarVarios(
+                new ContaCorrente(1234, 111215),
+                new ContaCorrente(1234, 732885),
+                new ContaCorrente(1234, 832199),
+                new ContaCorrente(1234, 321325)
+                    );          
+
+            for (int i = 0; i < lista.Tamanho; i++)
+            {
+                ContaCorrente conta = lista[i];
+                Console.WriteLine($"{conta.Agencia}/{conta.Numero}");
+            }
+
 
 
             /*ContaCorrente[] contas = new ContaCorrente[3];

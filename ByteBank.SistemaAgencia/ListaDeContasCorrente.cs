@@ -12,7 +12,7 @@ namespace ByteBank.SistemaAgencia
         private int _proximaPosicao;
         public ListaDeContasCorrente(int capacidadeInicial = 5)
         {
-            _contas = new ContaCorrente[5];
+            _contas = new ContaCorrente[capacidadeInicial];
             _proximaPosicao = 0;
         }
 
@@ -22,6 +22,28 @@ namespace ByteBank.SistemaAgencia
             Console.WriteLine($"Adicionando no índice {_proximaPosicao} conta {contaASerAdicionada.Agencia}/{contaASerAdicionada.Numero}");
             _contas[_proximaPosicao] = contaASerAdicionada;
             _proximaPosicao++;
+        }
+
+        public void Remover (ContaCorrente contaASerDeletada)
+        {
+            int indiceConta = -1;
+            for (int i = 0; i < _proximaPosicao; i++)
+            {
+                ContaCorrente contaAtual = _contas[i];
+                if (contaAtual.Equals(contaASerDeletada))
+                {
+                    indiceConta = i;
+                    break;
+                }
+            }
+
+            for (int i = indiceConta; i < _proximaPosicao -1; i++)
+            {
+                _contas[i] = _contas[i + 1];
+            }
+
+            _proximaPosicao--;
+            _contas[_proximaPosicao] = null;
         }
 
         private void VerificarCapacidade(int tamanhoNecessario)
@@ -46,5 +68,50 @@ namespace ByteBank.SistemaAgencia
             _contas = novoArray;
         }
 
+        public void EscreverListaNaTela()
+        {
+            for (int i = 0; i < _proximaPosicao; i++)
+            {
+                ContaCorrente conta = _contas[i];
+                Console.WriteLine($"Conta no índice {i}: numero {conta.Agencia} {conta.Numero}");
+            }
+        }
+        /// <summary>
+        /// Retorna conta corrente do índice informado
+        /// </summary>
+        /// <param name="indice"></param>
+        /// <returns></returns>
+        public ContaCorrente GetItemNoIndice(int indice)
+        {
+            if (indice < 0 || indice >= _proximaPosicao)
+            {
+                throw new ArgumentOutOfRangeException(nameof(indice));
+            }
+            return _contas[indice];
+        }
+
+        public int Tamanho
+        {
+            get
+            {
+                return _proximaPosicao;
+            }
+        }
+
+        public ContaCorrente this[int indice]
+        {
+            get
+            {
+                return GetItemNoIndice(indice);
+            }
+        }
+
+        public void AdicionarVarios(params ContaCorrente[] itens)
+        {
+            foreach (ContaCorrente conta in itens)
+            {
+                Adicionar(conta);
+            }
+        }
     }
 }
