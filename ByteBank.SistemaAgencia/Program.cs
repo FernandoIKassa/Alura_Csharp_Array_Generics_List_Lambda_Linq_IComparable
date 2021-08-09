@@ -12,6 +12,22 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
+            Lista<int> idades = new Lista<int>();
+            idades.AdicionarVarios(16, 22, 13, 2, 87, 99);
+            idades.Remover(99);
+
+            Lista<string> cursos = new Lista<string>();
+            cursos.AdicionarVarios("C# parte 1", "C# parte 2", "C# parte 3");
+
+            Lista<ContaCorrente> contas = new Lista<ContaCorrente>();
+            contas.AdicionarVarios(new ContaCorrente(1234, 56785435), new ContaCorrente(1234, 78464356));
+
+
+            Console.ReadLine();
+        }
+
+        static void TestaListaDeContaCorrente()
+        {
             ListaDeContasCorrente lista = new ListaDeContasCorrente(capacidadeInicial: 10);
 
             ContaCorrente contaTeste = new ContaCorrente(99999, 99999);
@@ -28,36 +44,35 @@ namespace ByteBank.SistemaAgencia
                 new ContaCorrente(1234, 732885),
                 new ContaCorrente(1234, 832199),
                 new ContaCorrente(1234, 321325)
-                    );          
+                    );
 
             for (int i = 0; i < lista.Tamanho; i++)
             {
                 ContaCorrente conta = lista[i];
                 Console.WriteLine($"{conta.Agencia}/{conta.Numero}");
             }
+        }
 
-
-
-            /*ContaCorrente[] contas = new ContaCorrente[3];
+        static void TestaArrayContaCorrente()
+        {
+            ContaCorrente[] contas = new ContaCorrente[3];
             contas[0] = new ContaCorrente(1234, 123456);
             contas[1] = new ContaCorrente(4321, 431276);
-            contas[2] = new ContaCorrente(1234, 542354);*/
+            contas[2] = new ContaCorrente(1234, 542354);
 
-            /*ContaCorrente[] contas = new ContaCorrente[]
-            {
+             /*ContaCorrente[] contas = new ContaCorrente[]
+             {
                 new ContaCorrente(1234, 123456),
-	            new ContaCorrente(4321, 431276),
-	            new ContaCorrente(1234, 542354),
-            };
-            
+                new ContaCorrente(4321, 431276),
+                new ContaCorrente(1234, 542354),
+             };*/
+
 
             for (int i = 0; i < contas.Length; i++)
             {
                 ContaCorrente contaAtual = contas[i];
                 Console.WriteLine($"Conta {i} {contaAtual.Numero}");
-            }*/
-
-            Console.ReadLine();
+            }
         }
     }
 }
