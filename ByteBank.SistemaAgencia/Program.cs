@@ -13,14 +13,8 @@ namespace ByteBank.SistemaAgencia
         static void Main(string[] args)
         {
             List<int> idades = new List<int>();
-
-            idades.Add(12);
-            idades.Add(2);
-            idades.Add(56);
-
-            idades.Remove(2);
-
-            idades.AdicionaVarios(1, 2, 99, 32);
+            
+            idades.AdicionaVarios(1, 2, 99, 32);    
 
             for (int i = 0; i < idades.Count; i++)
             {
@@ -29,6 +23,17 @@ namespace ByteBank.SistemaAgencia
 
 
             Console.ReadLine();
+        }
+
+        static void TestaListCollection()
+        {
+            List<int> idades = new List<int>();
+
+            idades.Add(12);
+            idades.Add(2);
+            idades.Add(56);
+
+            idades.Remove(2);
         }
 
         static void TestaListaGenerica()
