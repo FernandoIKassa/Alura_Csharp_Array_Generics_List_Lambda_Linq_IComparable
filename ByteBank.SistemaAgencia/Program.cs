@@ -12,15 +12,36 @@ namespace ByteBank.SistemaAgencia
     {
         static void Main(string[] args)
         {
-            List<int> idades = new List<int>();
-            
-            idades.AdicionaVarios(1, 2, 99, 32);    
+            //List<int> idades = new List<int>();
+            var idades = new List<int>();
 
-            for (int i = 0; i < idades.Count; i++)
+            //List<string> nomes = new List<string>();
+
+            //ContaCorrente contas = new ContaCorrente(1234, 43215678);
+            var contas = new ContaCorrente(1234, 4312);
+
+            var nomes = new List<string>()
             {
-                Console.WriteLine(idades[i]);
+                "Zuneide",
+                "Mariana",
+                "Almeida",
+                "Alan"
+            };
+
+            idades.AdicionaVarios(1, 2, 99, 32);
+
+            idades.Sort();
+            nomes.Sort();
+
+            foreach (var idade in idades)
+            {
+                Console.WriteLine(idade);
             }
 
+            foreach (var nome in nomes)
+            {
+                Console.WriteLine(nome);
+            }
 
             Console.ReadLine();
         }
