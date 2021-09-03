@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Comparador\ComparadorContaCorrentePorAgencia.cs" />
     <Compile Include="Estagiario.cs" />
     <Compile Include="Lista.cs" />
     <Compile Include="ListaDeContasCorrente.cs" />

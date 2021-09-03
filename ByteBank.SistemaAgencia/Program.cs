@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ByteBank.Modelos;
+using ByteBank.Modelos.Comparador;
 using ByteBank.Modelos.Funcionarios;
 
 namespace ByteBank.SistemaAgencia
@@ -18,7 +19,14 @@ namespace ByteBank.SistemaAgencia
             //List<string> nomes = new List<string>();
 
             //ContaCorrente contas = new ContaCorrente(1234, 43215678);
-            var contas = new ContaCorrente(1234, 4312);
+            var contas = new List<ContaCorrente>()
+            {
+                new ContaCorrente(1234, 4312),
+                new ContaCorrente(290, 31299),
+                new ContaCorrente(1234, 312),
+                new ContaCorrente(14, 11232),
+                new ContaCorrente(598, 3765)
+            };
 
             var nomes = new List<string>()
             {
@@ -32,15 +40,23 @@ namespace ByteBank.SistemaAgencia
 
             idades.Sort();
             nomes.Sort();
+            
+            //contas.Sort();
+            contas.Sort(new ComparadorContaCorrentePorAgencia());
 
-            foreach (var idade in idades)
-            {
-                Console.WriteLine(idade);
-            }
+            /* foreach (var idade in idades)
+             {
+                 Console.WriteLine(idade);
+             }
 
-            foreach (var nome in nomes)
+             foreach (var nome in nomes)
+             {
+                 Console.WriteLine(nome);
+             }*/
+
+            foreach (var conta in contas)
             {
-                Console.WriteLine(nome);
+                Console.WriteLine($"Agencia: {conta.Agencia} | Numero: {conta.Numero}");
             }
 
             Console.ReadLine();
